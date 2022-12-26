@@ -42,17 +42,19 @@ jobs:
         run: swift package resolve
       - name: Generate documentation
         run: |
-          swift package --disable-automatic-resolution --allow-writing-to-directory "${{ env.ARTIFACT_PATH }}" \
-            generate-documentation --target "TSPL-ko_KR" \
+          swift package \
+            --disable-automatic-resolution \
+            --allow-writing-to-directory "${{ env.ARTIFACT_PATH }}"\
+            generate-documentation \
             --output-path "${{ env.ARTIFACT_PATH }}"
       - name: Archive artifact
         run: |
           tar \
-          --directory ${{ env.ARTIFACT_PATH }} \
-          -cvf ${{ runner.temp }}/artifact.tar \
-          --exclude=.git \
-          --exclude=.github \
-          .
+            --directory ${{ env.ARTIFACT_PATH }} \
+            -cvf ${{ runner.temp }}/artifact.tar \
+            --exclude=.git \
+            --exclude=.github \
+            .
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:

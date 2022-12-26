@@ -9,7 +9,6 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-docc-plugin", branch: "main"),
     ],
     targets: [
-        .target(name: "TSPL"),
         .target(name: "TSPL-ko_KR"),
     ]
 )
