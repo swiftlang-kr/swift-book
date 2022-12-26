@@ -44,9 +44,7 @@ jobs:
         run: |
           swift package --disable-automatic-resolution --allow-writing-to-directory "${{ env.ARTIFACT_PATH }}" \
             generate-documentation --target "TSPL-ko_KR" \
-            --output-path "${{ env.ARTIFACT_PATH }}" \
-            --transform-for-static-hosting \
-            --hosting-base-path "swift-book"
+            --output-path "${{ env.ARTIFACT_PATH }}"
       - name: Archive artifact
         run: |
           tar \
