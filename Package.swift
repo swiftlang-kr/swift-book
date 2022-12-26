@@ -6,6 +6,7 @@ import PackageDescription
 let package = Package(
     name: "tspl",
     dependencies: [
+        .package(url: "https://github.com/apple/swift-docc", branch: "main"),
         .package(url: "https://github.com/apple/swift-docc-plugin", branch: "main"),
     ],
     targets: [
