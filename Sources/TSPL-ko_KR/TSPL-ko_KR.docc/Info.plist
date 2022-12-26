@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>TSPL</string>
+	<string>TSPL-ko_KR</string>
 	<key>CFBundleDisplayName</key>
 	<string>The Swift Programming Language</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.swift.tspl</string>
+	<string>org.swift-kr.TSPL-ko_KR</string>
 	<key>CDDefaultCodeListingLanguage</key>
 	<string>markdown</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>ko_KR</string>
 	<key>CFBundleIconFile</key>
 	<string>DocumentationIcon</string>
 	<key>CFBundleIconName</key>
