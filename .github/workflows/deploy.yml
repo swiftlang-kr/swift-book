@@ -1,0 +1,80 @@
+name: Deploy
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy.yml'
+      - 'Sources/TSPL-ko_KR/**/*'
+      - '**/*.swift'
+  pull_request:
+    paths:
+      - '.github/workflows/deploy.yml'
+      - 'Sources/TSPL-ko_KR/**/*'
+      - '**/*.swift'
+
+jobs:
+  build:
+    runs-on: macos-12
+    env:
+      XCODE_VERSION: '14.2'
+      SWIFT_VERSION: '5.7.2'
+      ARTIFACT_PATH: '_site/'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: sinoru/actions-setup-xcode@v2
+        if: ${{ startsWith(runner.os, 'macOS') && env.XCODE_VERSION }}
+        with:
+          xcode-version: ${{ env.XCODE_VERSION }}
+          apple-id: ${{ secrets.APPLE_ID }}
+          apple-id-password: ${{ secrets.APPLE_ID_PASSWORD }}
+      - uses: sinoru/actions-setup-swift@v2
+        with:
+          swift-version: ${{ env.SWIFT_VERSION }}
+      - uses: actions/cache@v3
+        id: cache
+        with:
+          path: .build
+          key: ${{ runner.os }}-swift-${{ env.SWIFT_VERSION }}-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-swift-${{ env.SWIFT_VERSION }}-
+            ${{ runner.os }}-swift-
+      - name: Resolve swift package
+        run: swift package resolve
+      - name: Generate documentation
+        run: |
+          swift package --disable-automatic-resolution --allow-writing-to-directory "${{ env.ARTIFACT_PATH }}" \
+            generate-documentation --target "TSPL-ko_KR" \
+            --output-path "${{ env.ARTIFACT_PATH }}" \
+            --transform-for-static-hosting \
+            --hosting-base-path "swift-book"
+      - name: Archive artifact
+        run: |
+          tar \
+          --directory ${{ env.ARTIFACT_PATH }} \
+          -cvf ${{ runner.temp }}/artifact.tar \
+          --exclude=.git \
+          --exclude=.github \
+          .
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 7
+  deploy:
+    needs: build
+    if: ${{ github.ref_name == 'kr/main' }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
