@@ -39,6 +39,9 @@ jobs:
             --disable-automatic-resolution \
             --allow-writing-to-directory "${{ env.ARTIFACT_PATH }}"\
             generate-documentation \
+            --target TSPL-ko_KR \
+            --disable-indexing \
+            --experimental-enable-custom-templates \
             --output-path "${{ env.ARTIFACT_PATH }}"
       - name: Archive artifact
         run: |
