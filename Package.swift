@@ -10,5 +10,6 @@ let package = Package(
     ],
     targets: [
         .target(name: "TSPL"),
+        .target(name: "TSPL-ko_KR"),
     ]
 )
