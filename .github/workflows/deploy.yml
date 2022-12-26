@@ -14,19 +14,12 @@ on:
 
 jobs:
   build:
-    runs-on: macos-12
+    runs-on: ubuntu-20.04
     env:
-      XCODE_VERSION: '14.2'
       SWIFT_VERSION: '5.7.2'
       ARTIFACT_PATH: '_site/'
     steps:
       - uses: actions/checkout@v3
-      - uses: sinoru/actions-setup-xcode@v2
-        if: ${{ startsWith(runner.os, 'macOS') && env.XCODE_VERSION }}
-        with:
-          xcode-version: ${{ env.XCODE_VERSION }}
-          apple-id: ${{ secrets.APPLE_ID }}
-          apple-id-password: ${{ secrets.APPLE_ID_PASSWORD }}
       - uses: sinoru/actions-setup-swift@v2
         with:
           swift-version: ${{ env.SWIFT_VERSION }}
