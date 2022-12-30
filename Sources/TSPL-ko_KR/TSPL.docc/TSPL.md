@@ -1,7 +1,7 @@
 # ``TSPL``
 
 @Metadata {
-  @DisplayName("The Swift Programming Language")
+  @DisplayName("Swift 프로그래밍 언어 (The Swift Programming Language)")
 }
 
 @Options(scope: global) {
@@ -10,15 +10,15 @@
   @AutomaticArticleSubheading(disabled)
 }
 
-## Topics
+## 주제
 
-### Welcome to Swift
+### Swift에 어서오세요 (Welcome to Swift)
 
 - <doc:AboutSwift>
 - <doc:Compatibility>
 - <doc:GuidedTour>
 
-### Language Guide
+### 언어 안내 (Language Guide)
 
 - <doc:TheBasics>
 - <doc:BasicOperators>
@@ -49,7 +49,7 @@
 - <doc:AccessControl>
 - <doc:AdvancedOperators>
 
-### Language Reference
+### 언어 참조 (Language Reference)
 
 - <doc:AboutTheLanguageReference>
 - <doc:LexicalStructure>
@@ -62,7 +62,7 @@
 - <doc:GenericParametersAndArguments>
 - <doc:SummaryOfTheGrammar>
 
-### Revision History
+### 수정 이력 (Revision History)
 
 - <doc:RevisionHistory>
 
