@@ -4,12 +4,12 @@ on:
   push:
     paths:
       - '.github/workflows/deploy.yml'
-      - 'Sources/TSPL-ko_KR/**/*'
+      - 'Sources/TSPL_ko/**/*'
       - '**/*.swift'
   pull_request:
     paths:
       - '.github/workflows/deploy.yml'
-      - 'Sources/TSPL-ko_KR/**/*'
+      - 'Sources/TSPL_ko/**/*'
       - '**/*.swift'
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
             --disable-automatic-resolution \
             --allow-writing-to-directory "${{ env.ARTIFACT_PATH }}"\
             generate-documentation \
-            --target TSPL-ko_KR \
+            --target TSPL_ko \
             --disable-indexing \
             --experimental-enable-custom-templates \
             --output-path "${{ env.ARTIFACT_PATH }}"
