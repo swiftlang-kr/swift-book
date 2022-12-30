@@ -5,7 +5,7 @@
 	<key>CFBundleName</key>
 	<string>TSPL_ko</string>
 	<key>CFBundleDisplayName</key>
-	<string>Swift 프로그래밍 언어</string>
+	<string>The Swift Programming Language</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.swift-kr.TSPL_ko</string>
 	<key>CDDefaultCodeListingLanguage</key>
