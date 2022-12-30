@@ -1,4 +1,4 @@
-# ``TSPL``
+# ``TSPL_ko``
 
 @Metadata {
   @DisplayName("Swift 프로그래밍 언어 (The Swift Programming Language)")
